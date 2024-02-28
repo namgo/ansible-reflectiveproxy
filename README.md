@@ -10,12 +10,14 @@ After the playbook is complete, a guest can run `ssh -NL 2222:localhost:2222 gue
 Requirements
 ------------
 
-Tested on Ubuntu hosts, doesn't install anything so should work fine on all Linux and maybe BSD.
+Tested on Ubuntu hosts, doesn't install anything so should work fine on all Linux that make use of systemd.
 
 Limitations
 -----------
 
 The role only allows one sshtunnel_guest_pubkey at the moment, adding support for multiple guest keys should be easy enough.
+
+The role requires systemd jobs, so some work would have to be done to enable multiple upstream middleboxes.
 
 Role Variables
 --------------
