@@ -16,22 +16,22 @@ The role only allows one sshtunnel_guest_pubkey at the moment, adding support fo
 Role Variables
 --------------
 
-sshtunnel_{middlebox,forward}_user: usernames to create (!) for proxy hosts (defaults to proxy)
-sshtunnel_{middlebox,forward}_home: home dir for users (defaults to /srv/proxy)
+`sshtunnel_{middlebox,forward}_user`: usernames to create (!) for proxy hosts (defaults to proxy)
+`sshtunnel_{middlebox,forward}_home`: home dir for users (defaults to /srv/proxy)
 
-sshtunnel_pubkey: public key for tunnel system, only on middlebox
-sshtunnel_privkey: private key for tunnel, only on forward
+`sshtunnel_pubkey`: public key for tunnel system, only on middlebox
+`sshtunnel_privkey`: private key for tunnel, only on forward
 
-sshtunnel_onport: port to be used on middlebox (defaults to 2222)
-sshtunnel_toport: active tcp port on forward (defaults to 22)
+`sshtunnel_onport`: port to be used on middlebox (defaults to 2222)
+`sshtunnel_toport`: active tcp port on forward (defaults to 22)
 
-is_forward: tells role to install the system as forward (there's gotta be a better way to do this)
-is_middlebox: tells role to install the system as middlebox
+`is_forward`: tells role to install the system as forward (there's gotta be a better way to do this)
+`is_middlebox`: tells role to install the system as middlebox
 
-sshtunnel_guest_user: guest who we are giving access to (defaults to guest)
-sshtunnel_guest_pubkey: guest user's public key
+`sshtunnel_guest_user`: guest who we are giving access to (defaults to guest)
+`sshtunnel_guest_pubkey`: guest user's public key
 
-sshtunnel_middlebox_ip: hostname/ip to connect to from forward
+`sshtunnel_middlebox_ip`: hostname/ip to connect to from forward
 
 Dependencies
 ------------
@@ -45,7 +45,7 @@ Example Playbook
 
 - hosts: forward
   roles:
-    - role: namgo.sshtunnel
+    - role: namgo.reflectiveproxy
       tags: forward
       vars:
         is_forward: true
@@ -57,7 +57,7 @@ Example Playbook
 
 - hosts: middlebox
   roles:
-    - role: namgo.sshtunnel
+    - role: namgo.reflectiveproxy
       tags: middlebox
       vars:
         is_middlebox: true
