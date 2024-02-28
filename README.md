@@ -3,6 +3,10 @@ Role Name
 
 This module forwards (mirrors?) a port to a middlebox over ssh-tunnel. The middlebox is then given a guest user who may access the forward.
 
+We needed this at my workplace because an outside user needed access to a single internal system, we couldn't justify opening the firewall and we couldn't guarantee their incoming IP address. So far as I can tell, this solution isn't egregiously slow and is `good enough`.
+
+After the playbook is complete, a guest can run `ssh -NL 2222:localhost:2222 guest@middlebox.host` and have access to forward.host:22 over their localhost:2222.
+
 Requirements
 ------------
 
