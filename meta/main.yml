@@ -1,4 +1,6 @@
 galaxy_info:
+  namespace: namgo
+  role_name: reflectiveproxy
   author: nathan@nzm.ca
   description: reflective proxy (in-in) to an authenticated user over ssh
   company: NeuroPoly
