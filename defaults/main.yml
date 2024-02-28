@@ -1,0 +1,27 @@
+---
+
+# remoteuser is who we are giving access to
+sshtunnel_guest_user: guest
+#sshtunnel_guest_pubkey
+
+
+is_forward: false
+is_middlebox: false
+
+sshtunnel_onport: 2222
+sshtunnel_toport: 22
+
+
+sshtunnel_middlebox_user: proxy
+sshtunneL_forward_user: proxy
+sshtunnel_middlebox_home: "/srv/proxy"
+sshtunnel_forward_home: "/srv/proxy"
+# sshtunnel_pubkey: ""
+# sshtunnel_privkey: ""
+sshtunnel_middlebox_ip: ""
+
+
+sshtunnel_shell: "/bin/false"
+#  public_key: -
+#  private_key: -
+
