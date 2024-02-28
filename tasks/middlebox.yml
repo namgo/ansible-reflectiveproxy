@@ -1,6 +1,6 @@
 ---
 
-- name: create middlebox_user account on middlebox
+- name: Create middlebox_user account on middlebox
   ansible.builtin.user:
     comment: "sshtunnel_middlebox_user"
     create_home: true
@@ -11,7 +11,7 @@
     shell: "{{ sshtunnel_shell }}"
     state: present
 
-- name: create guest account on middlebox
+- name: Create guest account on middlebox
   ansible.builtin.user:
     comment: "sshtunnel guest user"
     create_home: true
@@ -22,14 +22,14 @@
     shell: "{{ sshtunnel_shell }}"
     state: present
 
-- name: add guest sshkey to middlebox
+- name: Add guest sshkey to middlebox
   ansible.posix.authorized_key:
     user: "{{ sshtunnel_guest_user }}"
     key: "{{ sshtunnel_guest_pubkey }}"
     key_options: 'permitopen="localhost:2222",no-pty'
     state: present
 
-- name: override middlebox_user authorized_keys with forward's pubkey
+- name: Override middlebox_user authorized_keys with forward's pubkey
   ansible.posix.authorized_key:
     user: "{{ sshtunnel_middlebox_user }}"
     key: "{{ sshtunnel_pubkey }}"

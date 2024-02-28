@@ -1,6 +1,6 @@
 ---
 
-- name: create forward_user account
+- name: Create forward_user account
   ansible.builtin.user:
     comment: "sshtunnel_forward_user"
     create_home: true
@@ -11,13 +11,13 @@
     shell: "{{ sshtunnel_shell }}"
     state: present
     
-- name: mkdir
+- name: Mkdir
   ansible.builtin.file:
     path: "{{ sshtunnel_forward_home }}/.ssh/"
     owner: "{{ sshtunnel_forward_user }}"
     state: directory
 
-- name: place sshtunnel private key for forward_user
+- name: Place sshtunnel private key for forward_user
   ansible.builtin.copy:
     # newline wasn't in my generated privkey but seems necessary?
     content: "{{ sshtunnel_privkey }}\n"
@@ -26,12 +26,12 @@
     group: "{{ sshtunnel_forward_user }}"
     mode: "0600"
     
-- name: create the proxying systemd unit
+- name: Create the proxying systemd unit
   ansible.builtin.template:
     src: templates/sshtunnel.service.j2
     dest: /etc/systemd/system/sshtunnel.service
 
-- name: start the proxying systemd unit
+- name: Start the proxying systemd unit
   ansible.builtin.systemd_service:
     name: sshtunnel.service
     state: started
