@@ -2,9 +2,9 @@
   
 - name: Including forward
   ansible.builtin.include_tasks: forward.yml
-  when: is_forward == true
+  when: is_forward
   
 - name: Including middlebox
   ansible.builtin.include_tasks: middlebox.yml
-  when: is_middlebox == true
+  when: is_middlebox
   
