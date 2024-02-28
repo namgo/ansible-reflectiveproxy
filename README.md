@@ -45,7 +45,7 @@ Example Playbook
 
 - hosts: forward
   roles:
-    - role: neuropoly.sshtunnel
+    - role: namgo.sshtunnel
       tags: forward
       vars:
         is_forward: true
@@ -57,7 +57,7 @@ Example Playbook
 
 - hosts: middlebox
   roles:
-    - role: neuropoly.sshtunnel
+    - role: namgo.sshtunnel
       tags: middlebox
       vars:
         is_middlebox: true

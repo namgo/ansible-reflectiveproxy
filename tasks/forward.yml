@@ -2,28 +2,28 @@
 
 - name: create forward_user account
   ansible.builtin.user:
-    comment: "sshtunnel_broker.forward_user"
+    comment: "sshtunnel_forward_user"
     create_home: true
     generate_ssh_key: false
-    home: "{{ sshtunnel_broker.forward_home }}"
-    name: "{{ sshtunnel_broker.forward_user }}"
+    home: "{{ sshtunnel_forward_home }}"
+    name: "{{ sshtunnel_forward_user }}"
     # password: "*"
     shell: "{{ sshtunnel_shell }}"
     state: present
     
 - name: mkdir
   ansible.builtin.file:
-    path: "{{ sshtunnel_broker.forward_home }}/.ssh/"
-    owner: "{{ sshtunnel_broker.forward_user }}"
+    path: "{{ sshtunnel_forward_home }}/.ssh/"
+    owner: "{{ sshtunnel_forward_user }}"
     state: directory
 
-- name: place broker ssh private key for forward_user
+- name: place sshtunnel private key for forward_user
   ansible.builtin.copy:
     # newline wasn't in my generated privkey but seems necessary?
-    content: "{{ sshtunnel_broker.privkey }}\n"
-    dest: "{{ sshtunnel_broker.forward_home }}/.ssh/id_rsa"
-    owner: "{{ sshtunnel_broker.forward_user }}"
-    group: "{{ sshtunnel_broker.forward_user }}"
+    content: "{{ sshtunnel_privkey }}\n"
+    dest: "{{ sshtunnel_forward_home }}/.ssh/id_rsa"
+    owner: "{{ sshtunnel_forward_user }}"
+    group: "{{ sshtunnel_forward_user }}"
     mode: "0600"
     
 - name: create the proxying systemd unit
