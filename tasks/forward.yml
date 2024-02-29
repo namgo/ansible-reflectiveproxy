@@ -15,7 +15,8 @@
   ansible.builtin.file:
     path: "{{ sshtunnel_forward_home }}/.ssh/"
     owner: "{{ sshtunnel_forward_user }}"
-    mode: "0600"
+    group: "{{ sshtunnel_forward_user }}"
+    mode: u=rwX,g=X,o=X
     state: directory
 
 - name: Place sshtunnel private key for forward_user

@@ -17,7 +17,7 @@
     create_home: true
     generate_ssh_key: false
     # password: "*"
-    home: "{{ sshtunnel_middlebox_home }}"
+    home: "{{ sshtunnel_guest_home }}"
     name: "{{ sshtunnel_guest_user }}"
     shell: "{{ sshtunnel_shell }}"
     state: present
